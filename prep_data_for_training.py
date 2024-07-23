@@ -5,8 +5,8 @@ from sklearn.model_selection import train_test_split
 
 def main():
     DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_transformed.db'
-    TRAIN_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_train.jsonl'
-    TEST_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_test.jsonl'
+    TRAIN_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_train.json'
+    TEST_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_test.json'
     RANDOM_SEED = 1234
 
     # Make connection to SQLite database
@@ -16,20 +16,23 @@ def main():
     job = pd.read_sql('SELECT * FROM job', con)
 
     # Rename description column to text
-    job.rename(columns={'description':'text'}, inplace=True)
+    job.rename(columns={'description':'my_text'}, inplace=True)
 
     # Move non-listing columns into metadata column in dictionary form
     job['meta'] = job[['id', 'website_id', 'company_id', 'title', 'location', 'pay', 'timestamp']].to_dict(orient='records')
+    
+    # Move text and metadata into data column to comply with Label Studio .json format
+    job['data'] = job[['my_text', 'meta']].to_dict(orient='records')
 
     # Split into train and test data
-    job_train, job_test = train_test_split(job, test_size=0.2, stratify=job['website_id'], random_state=RANDOM_SEED)
-
-    print(job_train[['text', 'meta']].to_json(orient='records', lines=True))
+    job_train, job_test = train_test_split(job, train_size=0.6, stratify=job['website_id'], random_state=RANDOM_SEED)
 
     # Convert to .jsonl and write out
-    # with open(TRAIN_OUTPUT_PATH, 'w') as file:
-    #     file.write(job_train[['text', 'meta']].to_json(orient='records', lines=True))
-    
-    
+    with open(TRAIN_OUTPUT_PATH, 'w', encoding='utf-8') as file:
+        file.write(job_train[['data']].to_json(orient='records'))
+
+    with open(TEST_OUTPUT_PATH, 'w', encoding='utf-8') as file:
+        file.write(job_test[['data']].to_json(orient='records'))
+
 if __name__ == '__main__':
     main()
