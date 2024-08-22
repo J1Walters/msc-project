@@ -17,18 +17,19 @@ def main():
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
     # Get full location with geocoder
     print('Getting location info...')
-    clean_df['full_loc'] = clean_df['location'].apply(partial(geocode, language='en', addressdetails=True))
+    clean_df['full_loc'] = clean_df['location'].apply(partial(geocode, language='en', country_codes='gb', addressdetails=True))
     print('Done!')
     clean_df.loc[clean_df['location'].isin(['Remote', 'Multiple Locations']), 'full_loc'] = None
     # Get raw location data
     clean_df['raw_loc'] = clean_df['full_loc'].apply(lambda x: x.raw if x is not None else None)
-    # Get latitude and longitude from raw location data
-    clean_df['lat'] = clean_df['raw_loc'].apply(get_lat)
-    clean_df['long'] = clean_df['raw_loc'].apply(get_long)
+    # Get latitude and longitude
+    clean_df['lat'] = clean_df['full_loc'].apply(lambda x: x.latitude if x is not None else None)
+    clean_df['long'] = clean_df['full_loc'].apply(lambda x: x.longitude if x is not None else None)
     # Get settlement and country (within UK) from raw location data
     clean_df['settlement'] = clean_df['raw_loc'].apply(get_settlement)
     clean_df['state'] = clean_df['raw_loc'].apply(get_state)
-    print(clean_df.head(20))
+    # Export data
+    clean_df.to_csv(OUTPUT_PATH)
 
 def import_data(path):
     """Import data from sqlite db to dataframe"""
@@ -52,20 +53,6 @@ def clean_data(df):
     df['location'].replace('Multiple UK Locations', 'Multiple Locations', inplace=True)
     df['location'].replace('Multiple Worldwide Locations', 'Multiple Locations', inplace=True)
     return df
-
-def get_lat(raw_loc):
-    try:
-        lat = raw_loc['latitude']
-        return lat
-    except:
-        return None
-
-def get_long(raw_loc):
-    try:
-        long = raw_loc['longitude']
-        return long
-    except:
-        return None
 
 def get_settlement(raw_loc):
     try:
