@@ -3,14 +3,14 @@ import sqlean as sqlite3
 import spacy
 
 MODEL_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Large Models/charembed_bilstm_vec_60_20/model-best'
-DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_transformed.db'
+DATA_PATH = './location_data/location.csv'
 OUTPUT_PATH = './entities/raw/charembed_bilstm_vec_ents.csv'
 
 def main():
     # Load spaCy model
     nlp = spacy.load(MODEL_PATH)
     # Import job data
-    df = import_data(DATABASE_PATH)
+    df = pd.read_csv(DATA_PATH)
     # Get named entities from job description
     df['ents'] = df['description'].apply(get_entities, nlp=nlp)
     # Get each row to correspond to a single named entity
@@ -20,12 +20,6 @@ def main():
     ent_df.columns = ['ent', 'type']
     # Export the dataframe to .csv
     ent_df.to_csv(OUTPUT_PATH)
-
-def import_data(path):
-    """Import data from sqlite db to dataframe"""
-    con = sqlite3.connect(path)
-    job = pd.read_sql('SELECT * FROM job', con)
-    return job
 
 def get_entities(text, nlp):
     """Return the named entities"""
