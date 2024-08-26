@@ -2,7 +2,7 @@ import pandas as pd
 import sqlean as sqlite3
 import spacy
 
-MODEL_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Large Models/charembed_bilstm_vec_60_20/model-best'
+MODEL_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Large_Models/charembed_bilstm_vec_60_20/model-best'
 DATA_PATH = './location_data/location.csv'
 OUTPUT_PATH = './entities/raw/charembed_bilstm_vec_ents.csv'
 
