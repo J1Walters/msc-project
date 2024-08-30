@@ -1,18 +1,24 @@
 import pandas as pd
 
 DATA_PATH = './entities/raw/multihash_maxout_vec_ents.csv'
-OUTPUT_PATH = './entities/clean/'
+OUTPUT_PATH = './entities/clean/multihash_maxout_vec_ents_clean.csv'
 
 def main():
+    # Read in entity data
     df = pd.read_csv(DATA_PATH, index_col=0)
+    # Convert to uppercase so different cases can be merged
     df['new_ent'] = df['ent'].str.upper()
+    # Map entities
     map_lang_fram(df)
     map_h_skill(df)
     map_s_skill(df)
     map_req(df)
-    test = df.loc[df['type'] == 'H_SKILL', 'new_ent'].value_counts()
-    print(test.head(40))
-    print(test.loc[test.index.str.contains('NETWORKING')])
+    # # DEBUG
+    # test = df.loc[df['type'] == 'H_SKILL', 'new_ent'].value_counts()
+    # print(test.head(40))
+    # print(test.loc[test.index.str.contains('NETWORKING')])
+    # Save new dataframe
+    df.to_csv(OUTPUT_PATH)
 
 def map_lang_fram(df):
     """Mapping for entities of the technology, languages and frameworks type"""
