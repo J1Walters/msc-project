@@ -66,6 +66,8 @@ def map_h_skill(df):
     df.loc[(is_h_skill) & (df['new_ent'] == 'IMPLEMENT'), 'new_ent'] = 'IMPLEMENTATION'
     # Mapping for maintenance
     df.loc[(is_h_skill) & (df['new_ent'] == 'MAINTAIN'), 'new_ent'] = 'MAINTENANCE'
+    # Mapping for networking
+    df.loc[(is_h_skill) & (df['new_ent'].str.contains('NETWORKING')), 'new_ent'] = 'NETWORKING'
     
 
 def map_s_skill(df):
