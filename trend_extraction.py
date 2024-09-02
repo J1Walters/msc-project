@@ -21,9 +21,9 @@ def main():
     month_counts = df[['month', 'new_ent', 'type']].value_counts()
     week_counts = df[['week', 'new_ent', 'type']].value_counts()
     # Convert to dataframes
-    year_df = pd.DataFrame(year_counts).reset_index()
-    month_df = pd.DataFrame(month_counts).reset_index()
-    week_df = pd.DataFrame(week_counts).reset_index()
+    year_df = pd.DataFrame(year_counts).sort_index().reset_index()
+    month_df = pd.DataFrame(month_counts).sort_index().reset_index()
+    week_df = pd.DataFrame(week_counts).sort_index().reset_index()
     # Get entity totals in dataframe
     year_df['total'] = year_df['year'].map(year_totals)
     month_df['total'] = month_df['month'].map(month_totals)
