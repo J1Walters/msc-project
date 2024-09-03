@@ -4,7 +4,7 @@ import sqlean as sqlite3
 from sklearn.model_selection import train_test_split
 
 def main():
-    DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_transformed.db'
+    DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_transformed_OG_05072024.db'
     TRAIN_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_train.json'
     DEV_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_dev.json'
     TEST_OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_test.json'
