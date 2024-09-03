@@ -1,4 +1,4 @@
-,month,new_ent,type,count,proportion_perc,perc_change
+,time_period,new_ent,type,count,proportion_perc,perc_change
 0,2024-06,) MODELLING,H_SKILL,1,0.005199126546740148,0.0
 1,2024-06,"*, *383",S_SKILL,1,0.005199126546740148,0.0
 2,2024-06,*2024,S_SKILL,1,0.005199126546740148,0.0
