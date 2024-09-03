@@ -9,7 +9,7 @@ def main():
     # Convert timestamp col to datetime type
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     # Get time periods from timestamp
-    df['year'] = df['timestamp'].dt.to_period('Y')
+    df['year'] = df['timestamp'].dt.year
     df['month'] = df['timestamp'].dt.to_period('M')
     df['week'] = df['timestamp'].dt.to_period('W')
     # Get entity totals for each period
@@ -44,6 +44,10 @@ def main():
     year_df['perc_change'].fillna(0, inplace=True)
     month_df['perc_change'].fillna(0, inplace=True)
     week_df['perc_change'].fillna(0, inplace=True)
+    # Rename year, month, week columns to time_period
+    year_df.rename(columns={'year':'time_period'}, inplace=True)
+    month_df.rename(columns={'month':'time_period'}, inplace=True)
+    week_df.rename(columns={'week':'time_period'}, inplace=True)
     # Save dataframes as .csv to output folder
     year_df.to_csv(OUTPUT_FOLDER + 'yearly_trend.csv')
     month_df.to_csv(OUTPUT_FOLDER + 'monthly_trend.csv')
