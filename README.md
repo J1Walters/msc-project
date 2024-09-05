@@ -42,7 +42,7 @@ Script for extracting named entities from the job listings using provided model.
 - `geocoding.py`
 Script for geocoding the job listings to get locations ready for plotting.
 
-- `prep_data_for_training`
+- `prep_data_for_training.py`
 Script to split data into train, development and test sets.
 
 - `trend_extraction.py`
