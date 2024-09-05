@@ -2,7 +2,7 @@ numpy
 matplotlib
 seaborn
 pandas
-sqlean
+sqlean.py
 geopy
 spacy
 scikit-learn
