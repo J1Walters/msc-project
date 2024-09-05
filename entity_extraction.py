@@ -1,10 +1,9 @@
 import pandas as pd
-import sqlean as sqlite3
 import spacy
 
-MODEL_PATH = './models/colab_charembed_bilstm_60_20_annot/model-best'
-DATA_PATH = './location_data/location.csv'
-OUTPUT_PATH = './entities/raw/charembed_bilstm_ents.csv'
+MODEL_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Large_Models/multihash_maxout_vec_60_20/model-best'
+DATA_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/location_data/location.csv'
+OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/entities/raw/multihash_maxout_vec_ents.csv'
 
 def main():
     # Load spaCy model

@@ -5,7 +5,7 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
 DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_transformed.db'
-OUTPUT_PATH = './location_data/location.csv'
+OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/location_data/location.csv'
 
 def main():
     # Import job data

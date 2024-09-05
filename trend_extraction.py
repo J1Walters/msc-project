@@ -1,7 +1,7 @@
 import pandas as pd
 
-DATA_PATH = './entities/clean/multihash_maxout_vec_ents_clean.csv'
-OUTPUT_FOLDER = './trend_data/'
+DATA_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/entities/clean/multihash_maxout_vec_ents_clean.csv'
+OUTPUT_FOLDER = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/trend_data/'
 
 def main():
     # Import data

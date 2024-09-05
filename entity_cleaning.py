@@ -1,7 +1,7 @@
 import pandas as pd
 
-DATA_PATH = './entities/raw/multihash_maxout_vec_ents.csv'
-OUTPUT_PATH = './entities/clean/multihash_maxout_vec_ents_clean.csv'
+DATA_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/entities/raw/multihash_maxout_vec_ents.csv'
+OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/entities/clean/multihash_maxout_vec_ents_clean.csv'
 
 def main():
     # Read in entity data
