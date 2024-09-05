@@ -1,6 +1,7 @@
 # Analysing the UK Tech Job Market With NLP
 
 ## About
+MSc Project
 
 ## Contents
 - Configs:
@@ -16,15 +17,15 @@ Contains the .csv file containing geocoded jobs.
 Contains the trained NER models without word vectors. Models with word vectors are too large to fit in a repository.
 
 - Notebooks:
-    - entity_extraction: Prototyping for extracting named entities.
-    - entity_plots: Prototyping for plotting extracted entities.
-    - entity_visualisation: Prototyping entity display within a job listing using displaCy.
-    - location_map: Prototyping for mapping locations on a map.
-    - preprocessing: Experimentation with TF-IDF and BERTopic clustering.
-    - prototyping: Contains some TF-IDF experimentation.
-    - testing_ner: Contains CLI query for testing NER models.
-    - testing_visualisation: Plots of test set performance for the various NER models.
-    - trend_extraction: Prototyping for extracting trends from entities.
+    - `entity_extraction.ipynb`: Prototyping for extracting named entities.
+    - `entity_plots.ipynb`: Prototyping for plotting extracted entities.
+    - `entity_visualisation.ipynb`: Prototyping entity display within a job listing using displaCy.
+    - `location_map.ipynb`: Prototyping for mapping locations on a map.
+    - `preprocessing.ipynb`: Experimentation with TF-IDF and BERTopic clustering.
+    - `prototyping.ipynb`: Contains some TF-IDF experimentation.
+    - `testing_ner.ipynb`: Contains CLI query for testing NER models.
+    - `testing_visualisation.ipynb`: Plots of test set performance for the various NER models.
+    - `trend_extraction.ipynb`: Prototyping for extracting trends from entities.
 
 - Test_Results:
 Contains the .json files with the results obtained from `testing_ner.ipynb`.
