@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlean as sqlite3
 from functools import partial
+from time import time
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
@@ -8,6 +9,8 @@ DATABASE_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Data/joblistings_tra
 OUTPUT_PATH = 'C:/University/6G7V0007_MSC_Project/Project/Code/msc-project/location_data/location.csv'
 
 def main():
+    # Get start time
+    start = time.time()
     # Import job data
     df = import_data(DATABASE_PATH)
     # Clean data
@@ -30,6 +33,10 @@ def main():
     clean_df['state'] = clean_df['raw_loc'].apply(get_state)
     # Export data
     clean_df.to_csv(OUTPUT_PATH)
+    # Get end time and display time taken in minutes
+    end = time.time()
+    time_taken = (end - start) / 60
+    print(time_taken)
 
 def import_data(path):
     """Import data from sqlite db to dataframe"""
