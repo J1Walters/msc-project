@@ -36,7 +36,7 @@ def main():
     # Get end time and display time taken in minutes
     end = time.time()
     time_taken = (end - start) / 60
-    print(time_taken)
+    print(f'Time Taken: {time_taken} minutes')
 
 def import_data(path):
     """Import data from sqlite db to dataframe"""
