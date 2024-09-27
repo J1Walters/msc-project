@@ -48,7 +48,7 @@ def clean_data(df):
     """Clean data"""
     # Remove mentions of hybrid in location
     df['location'].replace(r'\(Hybrid\)', '', regex=True, inplace=True)
-    # Remove first line of address
+    # Remove all address lines other than final
     df['location'].replace(r'^[a-zA-Z0-9-.’\'\s]*,([a-zA-Z0-9-\s]*,)*', '', regex=True, inplace=True)
     # Remove company name where format is 'x in y'
     df['location'].replace(r'^[a-zA-Z0-9-.’\'\s]*\sin', '', regex=True, inplace=True)
