@@ -1,4 +1,4 @@
-"""Read in the data from the SQLite database and save train and test splits as .jsonl files"""
+"""Read in the data from the SQLite database and save train and test splits as .json files"""
 import pandas as pd
 import sqlean as sqlite3
 from sklearn.model_selection import train_test_split
