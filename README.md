@@ -1,7 +1,7 @@
 # Analysing the UK Tech Job Market With NLP
 
 ## About
-MSc Project
+Main repository for MSc project.
 
 ## Contents
 - Configs:
